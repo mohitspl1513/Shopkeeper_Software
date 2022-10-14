@@ -40,9 +40,13 @@ namespace ShopKeeperSoftware
         }
         public void MenuCard()
         {
-
+            Console.WriteLine("*********************** Here is Menu Card*******************");
             foreach (KeyValuePair<string, int> kvp in items)
                 Console.WriteLine("itemName: {0}, Price: {1}", kvp.Key, kvp.Value);
+            Console.WriteLine("************************************************************");
+            Console.WriteLine();
+
+         
         }
         public void OrderItems()
         {
@@ -76,21 +80,31 @@ namespace ShopKeeperSoftware
         }
         public void BillNo()
         {
+            Console.WriteLine("****************************Here is Your Bill**********************");
             last = f.ToString();
             int i = last.Length;
             billNo = a + b + (c.Substring(0, c.Length - i)) + last;
             f++;
             Console.WriteLine("Bill No.: " + billNo);
 
-            Date_Time();
+            Date();
+            Console.WriteLine();
+            Time();
         }
         public void Print()
         {
+            int temp=0;
             Console.WriteLine(" S.No." + "  " + "Name of Items" + "  " + "Quantity" + "  " + "Amount");
-            for(int i= 0; i < SNo; i++)
+            for(int i= 0; i < OrderedItem.Count; i++)
             {
-                Console.Write(i +" "+ OrderedItem[i] +" "+ Quantities[i]+" " + Order[i]);
+                Console.Write(i+1 +"        "+ OrderedItem[i] +"          "+ Quantities[i]+"          " + Order[i]);
+                Console.WriteLine();
+                temp = temp+Convert.ToInt32(Order[i]);
             }
+            Console.WriteLine();
+            Console.WriteLine("Total Bills : "+ temp);
+             Console.WriteLine();
+            Console.WriteLine("******************************************************************");
         }
         public void Date_Time()
         {
